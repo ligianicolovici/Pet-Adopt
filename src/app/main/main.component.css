@@ -1,0 +1,26 @@
+header {
+  padding: 154px 0 100px;
+}
+.killimanjaro-header {
+  background-color: orange;
+}
+
+@media (min-width: 992px) {
+  header {
+    padding: 156px 0 100px;
+  }
+}
+
+section {
+  padding: 150px 0;
+}
+.footer-bottom {
+  background: #343a40 !important;
+  padding: 40px;
+}
+footer a {
+  color: #f8f9fa !important;
+}
+navbar-righ {
+  margin-right: 21px;
+}
