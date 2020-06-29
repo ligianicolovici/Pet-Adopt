@@ -1,0 +1,117 @@
+<mat-vertical-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <app-animal-form></app-animal-form>
+    <!-- <div>
+      <button mat-button matStepperNext>
+        Next
+      </button>
+    </div> -->
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <app-contact-form></app-contact-form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <app-preview></app-preview>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>
+
+<!-- <div class="wizard">
+  <div class="wizard-inner">
+    <div class="connecting-line"></div>
+    <ul class="nav nav-tabs" role="tablist">
+      <li
+        role="presentation"
+        class="nav-item"
+        (click)="onNextStep(steper._step1.step)"
+      >
+        <a
+          routerLink="/add/step1"
+          data-toggle="tab"
+          aria-controls="step1"
+          role="tab"
+          title="Step 1"
+          class="nav-link"
+          [ngClass]="{ active: steper.step1 }"
+        >
+          <span class="round-tab"> </span>
+        </a>
+      </li>
+      <li
+        role="presentation"
+        class="nav-item"
+        (click)="onNextStep(steper._step2.step)"
+      >
+        <a
+          routerLink="/add/step2"
+          data-toggle="tab"
+          aria-controls="step2"
+          role="tab"
+          title="Step 2"
+          class="nav-link disabled"
+          [ngClass]="{ active: steper.step2 }"
+        >
+          <span class="round-tab"> </span>
+        </a>
+      </li>
+      <li
+        role="presentation"
+        class="nav-item"
+        (click)="onNextStep(steper._step3.step)"
+      >
+        <a
+          routerLink="/add/step3"
+          data-toggle="tab"
+          aria-controls="step3"
+          role="tab"
+          title="Step 3"
+          class="nav-link disabled"
+          [ngClass]="{ active: steper.step3 }"
+        >
+          <span class="round-tab"> </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="tab-content">
+    <div
+      class="tab-pane text-center"
+      [ngClass]="{ active: steper.step1 }"
+      role="tabpanel"
+      id="step1"
+    >
+      <h1 class="text-md-center">Step 1</h1>
+    </div>
+    <div
+      class="tab-pane"
+      [ngClass]="{ active: steper.step2 }"
+      role="tabpanel"
+      id="step2"
+    >
+      <h1 class="text-md-center">Step 2</h1>
+    </div>
+    <div
+      class="tab-pane"
+      [ngClass]="{ active: steper.step3 }"
+      role="tabpanel"
+      id="step3"
+    >
+      <h1 class="text-md-center">Step 3</h1>
+    </div>
+    <div
+      class="tab-pane"
+      [ngClass]="{ active: steper.finished }"
+      role="tabpanel"
+      id="step5"
+    >
+      <h1 class="text-md-center">Complete</h1>
+      <div class="row"></div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div> -->

@@ -1,0 +1,165 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="formBox">
+        <form #adoptionForm="ngForm">
+          <div class="row">
+            <div class="col-sm-12">
+              <h1>Adoption info</h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="inputBox form-group">
+                <div class="inputText"></div>
+                <input
+                  type="number"
+                  name="nrOfPets"
+                  class="input"
+                  ngModel
+                  placeholder="Number of pets"
+                  value="1"
+                />
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="inputBox form-group">
+                <div class="inputText"></div>
+                <input type="text" name="" class="input" placeholder="Title" />
+              </div>
+            </div>
+
+            <div class="col-sm-12">
+              <div class="raw">
+                <div class="boxes form-group">
+                  <h4 style="color: azure;">Pet needs</h4>
+                  <br />
+                  <input
+                    type="checkbox"
+                    id="box-1"
+                    ngModel=""
+                    #healthProblems="ngModel"
+                    name="healthProblems"
+                  />
+                  <label for="box-1">Health-care </label>
+
+                  <input
+                    type="checkbox"
+                    id="box-2"
+                    ngModel=""
+                    #foster="ngModel"
+                    name="foster"
+                    [disabled]="adoption.dirty"
+                  />
+                  <label for="box-2">Foster </label>
+
+                  <input
+                    type="checkbox"
+                    id="box-3"
+                    ngModel=""
+                    #adoption="ngModel"
+                    name="adoption"
+                    [disabled]="foster.dirty"
+                  />
+                  <label for="box-3">Adoption</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br />
+
+          <div class="row" *ngIf="healthProblems.value">
+            <div class="col-sm-12">
+              <div class="inputBox">
+                <div class="inputText"></div>
+                <textarea
+                  class="input"
+                  placeholder="Health care needs"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" *ngIf="foster.value">
+            <div class="col-sm-12">
+              <div class="inputBox">
+                <div class="inputText"></div>
+                <input
+                  type="number"
+                  name=""
+                  class="input"
+                  placeholder="Number of foster days"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="inputBox">
+                <div class="inputText"></div>
+                <h2 style="color: grey;">Upload images</h2>
+                <hr />
+
+                <input
+                  #file
+                  type="file"
+                  accept="image/*"
+                  class="btn btn upload"
+                  (change)="preview(file.files)"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-4" *ngFor="let image of images; let i = index">
+              <div class="inputBox">
+                <div class="imageDiv">
+                  <img [src]="image" class="image" />
+                  <div class="overlay">
+                    <a
+                      (click)="onDeleteImage(i)"
+                      class="icon"
+                      title="User Profile"
+                    >
+                      <p>Delete</p>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="inputBox">
+                <div class="inputText"></div>
+                <textarea
+                  class="input"
+                  placeholder="Tell us the story"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12 form-group">
+              <button
+                mat-button
+                matStepperNext
+                type="submit"
+                name=""
+                class="button"
+                value="Done"
+              >
+                Next
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

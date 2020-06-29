@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+  </head>
+
+  <body id="page-top">
+    <div class="login-block">
+      <div class="container">
+        <ng-template appPlaceholder></ng-template>
+        <div class="row">
+          <div class="col-md-4 login-sec">
+            <h2 class="text-center">Login Now</h2>
+            <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+              <div class="form-group">
+                <label for="email" class="text-uppercase">Email</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  email
+                  required
+                  ngModel
+                />
+              </div>
+              <div class="form-group">
+                <label for="password" class="text-uppercase">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  ngModel
+                  id="password"
+                  name="password"
+                  required
+                  minlength="6"
+                />
+              </div>
+              <div class="form-check">
+                <button
+                  type="button"
+                  class="btn btn-login float-right"
+                  (click)="onSwitchState()"
+                >
+                  Switch to Sign-up
+                </button>
+                <button
+                  type="sumbit"
+                  [disabled]="
+                    (!loginForm.valid && loginForm.touched) ||
+                    loginForm.untouched
+                  "
+                  class="btn btn-login float-right"
+                >
+                  {{ isLoginState ? "Login" : "Sign-up" }}
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="col-md-8 banner-sec">
+            <div
+              id="carouselExampleIndicators"
+              class="carousel-slide"
+              data-ride="carousel"
+            >
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    class="d-block img-fluid"
+                    src="https://santansun.com/wp-content/uploads/2018/11/5b7fdeab1900001d035028dc.jpeg"
+                    alt="First slide"
+                  />
+                  <div class="carousel-caption d-none d-md-block">
+                    <div class="banner-text">
+                      <h2>Pet adopt</h2>
+                      <p>
+                        Welcome to our web site. If you are interested in
+                        animals adoption or you have a soul in need for a home
+                        please login or sign-up to become part of out community.
+                        There are dozens of souls waiting for you.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
