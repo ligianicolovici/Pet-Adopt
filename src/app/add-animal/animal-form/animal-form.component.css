@@ -27,7 +27,7 @@ body {
   transition: 0.5s;
   opacity: 0.5;
 }
-.inputBox .input {
+.inputBox .input.ng-untouched {
   position: relative;
   width: 100%;
   height: 50px;
@@ -37,6 +37,30 @@ body {
   font-size: 24px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
 }
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 24px;
+  border-bottom: 1px solid red;
+}
+
+input.ng-valid.ng-touched,
+textarea.ng-valid.ng-touched {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 24px;
+  border-bottom: 1px solid green;
+}
+
 .focus .inputText {
   transform: translateY(-30px);
   font-size: 18px;

@@ -1,4 +1,7 @@
+import { PetFormData } from './../models';
+import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { AddAnimalService } from '../add-animal.component.service';
 
 @Component({
   selector: 'app-animal-form',
@@ -10,7 +13,8 @@ export class AnimalFormComponent implements OnInit {
   imgURL: any;
   images: any[] = [];
   message: string;
-  constructor() {}
+  validity = false;
+  constructor(private addAnimalService: AddAnimalService) {}
 
   ngOnInit(): void {}
 
@@ -39,5 +43,28 @@ export class AnimalFormComponent implements OnInit {
       console.log('Din array: ' + ind);
       return ind !== index;
     });
+  }
+  onPetSubmit(animalForm: NgForm) {
+    if (!animalForm.valid) {
+      return;
+    }
+    const petFormResult: PetFormData = {
+      nrOfPets: animalForm.value.nrOfPets,
+      title: animalForm.value.title,
+      healthCare: animalForm.value.healthProblems ? true : false,
+      foster: animalForm.value.foster ? true : false,
+      adoption: animalForm.value.adoption ? true : false,
+      healthCareInstructions: animalForm.value.healthProblems
+        ? animalForm.value.healthNeeds
+        : null,
+      fosterDays: animalForm.form.value.foster
+        ? animalForm.value.fosterDays
+        : null,
+      images: this.images.length > 0 ? this.images : [],
+      story: animalForm.value.story,
+    };
+    this.validity = true;
+    this.addAnimalService.submitPetForm(petFormResult);
+    this.addAnimalService.petForm = animalForm;
   }
 }

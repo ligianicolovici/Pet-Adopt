@@ -1,1 +1,114 @@
-<p>preview works!</p>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+  integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+  crossorigin="anonymous"
+></script>
+
+<div class="container">
+  <mat-card class="preview-card" *ngIf="petFormInput && contactFormInput">
+    <mat-card-header>
+      <div
+        mat-card-avatar
+        class="adopt-header-image"
+        *ngIf="petFormInput.adoption"
+      ></div>
+      <div
+        mat-card-avatar
+        class="foster-header-image"
+        *ngIf="petFormInput.foster"
+      ></div>
+      <mat-card-title>{{ petFormInput.title }}</mat-card-title>
+      <mat-card-subtitle>{{
+        petFormInput.adoption ? "Adoption" : "Foster"
+      }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <div
+      id="pics"
+      class="carousel slide"
+      data-ride="carousel"
+      *ngIf="petPics.length > 0"
+    >
+      <ol class="carousel-indicators">
+        <!-- <li data-target="#pics" data-slide-to="0" class="active"></li> -->
+        <li
+          data-target="#pics"
+          *ngFor="let pic of petPics; let i = index"
+          [attr.data-slide-to]="i"
+          [ngClass]="{ active: i == 0 }"
+        ></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <div
+          class="carousel-item"
+          *ngFor="let pic of petPics; let i = index"
+          [ngClass]="{ active: i == 0 }"
+        >
+          <img [src]="pic" width="auto" height="auto" />
+        </div>
+      </div>
+      <a
+        class="carousel-control-prev"
+        data-target="#pics"
+        ng-click="slide('prev')"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </a>
+      <a
+        class="carousel-control-next"
+        data-target="#pics"
+        ng-click="slide('next')"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <mat-card-content style="margin-left: 5px;">
+      <h1>Pet Info</h1>
+      <p>
+        {{ "Story : " + petFormInput.story }}
+      </p>
+      <p>
+        {{ "Number of pets : " + petFormInput.nrOfPets }}
+      </p>
+      <p>
+        {{
+          petFormInput.healthCareInstructions
+            ? "Health-care needs: " + petFormInput.healthCareInstructions
+            : "No health issues"
+        }}
+      </p>
+      <h1>Finder's contact info</h1>
+      <p>
+        {{
+          "Name: " +
+            contactFormInput.firstname +
+            " " +
+            contactFormInput.lastname
+        }}
+      </p>
+
+      <p>
+        {{ "Phone: " + contactFormInput.mobile }}
+      </p>
+
+      <p>
+        {{ "Email " + contactFormInput.email }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions style="justify-content: center;">
+      <button mat-button [disabled]="true">
+        {{ petFormInput.adoption ? "Adopt" : "Be a foster" }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

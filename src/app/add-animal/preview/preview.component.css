@@ -1,0 +1,31 @@
+.preview-card {
+  width: 70%;
+}
+
+.adopt-header-image {
+  background-image: url("../../../resources/adopt.jpg");
+  background-size: cover;
+}
+.foster-header-image {
+  background-image: url("../../../resources/foster.png");
+  background-size: cover;
+}
+
+.container {
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  flex-wrap: wrap;
+  display: flex;
+}
+.carousel-inner img {
+  width: 100%;
+  height: 100%;
+}
+button {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: #03a9f4;
+  color: #fff;
+}

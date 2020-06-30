@@ -2,7 +2,10 @@
   <div class="row">
     <div class="col-md-12">
       <div class="formBox">
-        <form>
+        <form
+          #contactForm="ngForm"
+          (ngSubmit)="onContactFormSumbit(contactForm)"
+        >
           <div class="row">
             <div class="col-sm-12">
               <h1>Contact information</h1>
@@ -11,22 +14,26 @@
 
           <div class="row">
             <div class="col-sm-6">
-              <div class="inputBox">
+              <div class="inputBox form-group">
                 <input
                   type="text"
-                  name="firstName"
-                  class="input"
+                  name="firstname"
+                  ngModel
+                  required
+                  class="input form-control"
                   placeholder="First Name"
                 />
               </div>
             </div>
 
             <div class="col-sm-6">
-              <div class="inputBox">
+              <div class="inputBox form-group">
                 <input
                   type="text"
-                  name="lastName"
-                  class="input"
+                  name="lastname"
+                  ngModel
+                  required
+                  class="input form-control"
                   placeholder="Last Name"
                 />
               </div>
@@ -36,11 +43,14 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="inputBox">
-                <div class="inputText"></div>
+                <div class="inputText form-group"></div>
                 <input
                   type="text"
                   name="email"
-                  class="input"
+                  ngModel
+                  required
+                  email
+                  class="input form-control"
                   placeholder="Email"
                 />
               </div>
@@ -49,12 +59,15 @@
 
           <div class="row">
             <div class="col-sm-12">
-              <div class="inputBox">
+              <div class="inputBox form-group">
                 <input
                   type="text"
                   name="mobile"
-                  class="input"
+                  ngModel
+                  required
+                  class="input form-control"
                   placeholder="Mobile"
+                  minlength="10"
                 />
               </div>
             </div>
@@ -65,7 +78,6 @@
                 mat-button
                 matStepperPrevious
                 type="button"
-                name=""
                 class="button"
               >
                 Back
@@ -77,8 +89,8 @@
                 mat-button
                 matStepperNext
                 type="submit"
-                name=""
                 class="button"
+                [disabled]="!contactForm.valid"
               >
                 Next
               </button>

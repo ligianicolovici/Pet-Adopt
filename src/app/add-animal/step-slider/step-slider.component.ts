@@ -1,3 +1,4 @@
+import { AddAnimalService } from './../add-animal.component.service';
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -7,6 +8,7 @@ import {
   NgForm,
 } from '@angular/forms';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-step-slider',
@@ -21,22 +23,13 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 })
 export class StepSliderComponent implements OnInit {
   isLinear = false;
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
+  firstFormGroup: NgForm;
+  secondFormGroup: NgForm;
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private addAnimalService: AddAnimalService) {}
 
   ngOnInit() {
-    this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: new FormControl(),
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: new FormControl(),
-    });
-  }
-  onSubmitFirstForm(adoptionForm: NgForm) {
-    const value = adoptionForm.value;
-    const numberOfPets = value.nrOfPets;
-    console.log(numberOfPets);
+    this.firstFormGroup = this.addAnimalService.petForm;
+    this.secondFormGroup = this.addAnimalService.contactForm;
   }
 }

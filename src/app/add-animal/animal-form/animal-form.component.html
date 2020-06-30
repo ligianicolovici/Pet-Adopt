@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="formBox">
-        <form #adoptionForm="ngForm">
+        <form #adoptionForm="ngForm" (ngSubmit)="onPetSubmit(adoptionForm)">
           <div class="row">
             <div class="col-sm-12">
               <h1>Adoption info</h1>
@@ -15,10 +15,11 @@
                 <input
                   type="number"
                   name="nrOfPets"
-                  class="input"
+                  class="input form-control"
                   ngModel
                   placeholder="Number of pets"
-                  value="1"
+                  min="1"
+                  required
                 />
               </div>
             </div>
@@ -26,7 +27,14 @@
             <div class="col-sm-12">
               <div class="inputBox form-group">
                 <div class="inputText"></div>
-                <input type="text" name="" class="input" placeholder="Title" />
+                <input
+                  type="text"
+                  ngModel
+                  required
+                  name="title"
+                  class="input form-control"
+                  placeholder="Title"
+                />
               </div>
             </div>
 
@@ -41,6 +49,7 @@
                     ngModel=""
                     #healthProblems="ngModel"
                     name="healthProblems"
+                    class="form-control"
                   />
                   <label for="box-1">Health-care </label>
 
@@ -50,6 +59,7 @@
                     ngModel=""
                     #foster="ngModel"
                     name="foster"
+                    class="form-control"
                     [disabled]="adoption.dirty"
                   />
                   <label for="box-2">Foster </label>
@@ -60,6 +70,7 @@
                     ngModel=""
                     #adoption="ngModel"
                     name="adoption"
+                    class="form-control"
                     [disabled]="foster.dirty"
                   />
                   <label for="box-3">Adoption</label>
@@ -74,7 +85,10 @@
               <div class="inputBox">
                 <div class="inputText"></div>
                 <textarea
-                  class="input"
+                  class="input form-control"
+                  ngModel
+                  required
+                  name="healthNeeds"
                   placeholder="Health care needs"
                 ></textarea>
               </div>
@@ -87,8 +101,11 @@
                 <div class="inputText"></div>
                 <input
                   type="number"
-                  name=""
-                  class="input"
+                  ngModel
+                  required
+                  min="1"
+                  name="fosterDays"
+                  class="input form-control"
                   placeholder="Number of foster days"
                 />
               </div>
@@ -137,7 +154,10 @@
               <div class="inputBox">
                 <div class="inputText"></div>
                 <textarea
-                  class="input"
+                  class="input form-control"
+                  ngModel
+                  name="story"
+                  required
                   placeholder="Tell us the story"
                 ></textarea>
               </div>
@@ -150,9 +170,9 @@
                 mat-button
                 matStepperNext
                 type="submit"
-                name=""
                 class="button"
                 value="Done"
+                [disabled]="!adoptionForm.valid"
               >
                 Next
               </button>
